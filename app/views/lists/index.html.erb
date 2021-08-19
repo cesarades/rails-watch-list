@@ -1,12 +1,16 @@
-<h1>Lists</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1951&q=80);">
+  <div class="container">
+    <h1>Movie Lists</h1>
+    <p>Save movies of any kind</p>
+  </div>
+</div>
 
-<ul>
+<%= link_to 'New List', new_list_path, class: 'btn btn-primary btn-lg btn-block'%>
+
+<div class="cards m-3">
   <% @lists.each do |list| %>
-    <li>
-      <%= list.name %>
-      <%= link_to 'Show', list_path(list) %>
-    </li>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/random)">
+      <%= link_to list.name, list_path(list) %>
+    </div>
   <% end %>
-</ul>
-
-<%= link_to 'New List', new_list_path %>
+</div>
