@@ -2,9 +2,9 @@ puts "Cleaning db"
 Movie.delete_all
 puts "Movies cleaned"
 
-5.times do
+25.times do
   movie = Movie.new(
-    title: Faker::Movie.title,
+    title: Faker::Movie.unique.title,
     overview: Faker::Quote.famous_last_words,
     poster_url: 'https://source.unsplash.com/random'
   )

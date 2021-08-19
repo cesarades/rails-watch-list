@@ -9,6 +9,6 @@
   <% end %>
 </ul>
 
-<%= link_to 'Add movie', new_list_bookmark_path(@list) %>
+<%= render 'bookmarkform', list: @list, bookmark: @bookmark %>
 <br>
 <%= link_to 'Back', lists_path %>
