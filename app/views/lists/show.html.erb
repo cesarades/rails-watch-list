@@ -1,33 +1,28 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @list.photo.key %>');">
-  <div class="container">
-    <h1><%= @list.name %></h1>
+<%= render 'banner', image_url: cl_image_path(@list.photo.key), h1: @list.name, h2: 'Checkout these movies out' %>
+<%= link_to 'All Lists', root_path, class: 'btn btn-flat btn-lg btn-block'%>
+
+<div class="row">
+  <div class="col-8">
+    <div class="cards m-3">
+      <% @bookmarks.each do |bookmark| %>
+        <div class="card-trip">
+          <img src="https://source.unsplash.com/featured/?<%= bookmark.movie.title %>" />
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= bookmark.movie.title %></h2>
+              <p><%= bookmark.movie.overview %></p>
+            </div>
+            <h4 class="card-trip-pricing">
+              <%= link_to bookmark_path(bookmark), method: :delete, data: { :confirm => "You sure?" } do %>
+                <i class="fas fa-trash"></i>
+              <% end %>
+            </h4>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-4">
+    <%= render 'bookmarkform', list: @list, bookmark: @bookmark %>
   </div>
 </div>
-
-<div class="cards m-3">
-  <% @bookmarks.each do |bookmark| %>
-    <div class="card-trip">
-      <img src="https://source.unsplash.com/random" />
-      <div class="card-trip-infos">
-        <div>
-          <h2><%= bookmark.movie.title %></h2>
-          <p><%= bookmark.movie.overview %></p>
-        </div>
-        <h4 class="card-trip-pricing">
-          <%= link_to bookmark_path(bookmark), method: :delete, data: { :confirm => "You sure?" } do %>
-            <i class="fas fa-trash"></i>
-          <% end %>
-        </h4>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<%= render 'bookmarkform', list: @list, bookmark: @bookmark %>
-<ul id="results">
-</ul>
-
-<br>
-<%= link_to 'Back', root_path %>
-
-<%= javascript_pack_tag 'autocomplete' %>

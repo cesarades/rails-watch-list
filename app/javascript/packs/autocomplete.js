@@ -4,7 +4,7 @@ const url = "https://wagon-dictionary.herokuapp.com/autocomplete/";
 // Select the unordered list and create functions to add/remove li's
 const ul = document.getElementById("results");
 const deleteAll = elements => elements.forEach(element => element.remove());
-const addChildren = (parent, children) => children.forEach(child => parent.insertAdjacentHTML("beforeend", `<li>${child}</li>`));
+const addChildren = (parent, children) => children.forEach(child => parent.insertAdjacentHTML("beforeend", `<li><a href="#">${child}</a></li>`));
 
 // This method adds the autocomplete for each keyUp
 const addSearchLetter = (event) => {
